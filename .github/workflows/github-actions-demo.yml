@@ -1,0 +1,47 @@
+# 工作流名称，显示在 GitHub Actions 页面的工作流列表中
+name: GitHub Actions Demo
+
+# 运行名称，定义每次工作流运行在 UI 中显示的标题
+# github.actor 是触发该运行的用户名，🚀 为装饰性 emoji
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+# 触发条件：当代码被 push 到任何分支时自动触发此工作流
+on: [push]
+
+# 定义工作流中包含的所有作业（jobs）
+jobs:
+  # 作业 ID（自定义标识符），其他作业可通过此 ID 引用它
+  Explore-GitHub-Actions:
+    # 指定运行环境为 GitHub 托管的最新 Ubuntu 虚拟机
+    runs-on: ubuntu-latest
+
+    # 定义该作业按顺序执行的步骤列表
+    steps:
+      # 步骤1：输出触发事件类型（如 push、pull_request 等）
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+
+      # 步骤2：输出当前运行器的操作系统信息
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+
+      # 步骤3：输出当前分支引用和仓库全名（格式：owner/repo）
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      # 步骤4：使用官方 checkout Action 将仓库代码克隆到运行器的工作目录
+      # v6 是该 Action 的主版本号
+      - name: Check out repository code
+        uses: actions/checkout@v6
+
+      # 步骤5：确认代码已成功克隆到运行器
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+
+      # 步骤6：提示工作流已准备好在运行器上测试代码
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+      # 步骤7：列出工作区目录下的所有文件和文件夹
+      # github.workspace 指向代码被检出后的默认工作目录路径
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      # 步骤8：输出当前作业的最终执行状态（success / failure / cancelled）
+      - run: echo "🍏 This job's status is ${{ job.status }}."
