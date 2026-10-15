@@ -4,9 +4,9 @@ name: Go CI Pipeline
 # 触发条件：当推送到 main 分支，或向 main 分支发起 Pull Request 时触发
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   build-and-test:
