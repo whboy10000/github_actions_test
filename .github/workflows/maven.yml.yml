@@ -8,10 +8,10 @@ name: Java CI with Maven
 on:
   # 推送到默认分支(如 main/master)时触发
   push:
-    branches: [ main, master ]
+    branches: [ main, master,maven_java]
   # 创建针对默认分支的拉取请求时触发
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master,maven_java]
   # 可选: 手动触发工作流运行
   # workflow_dispatch:
 
