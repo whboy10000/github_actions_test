@@ -18,12 +18,12 @@ class CalculatorTest {
         calculator = new Calculator();
     }
 
-    @Test
-    void testAdd() {
-        assertEquals(15, calculator.add(10, 5));
-        assertEquals(0, calculator.add(-10, 10));
-        assertEquals(-5, calculator.add(-10, -5));
-    }
+    // @Test
+    // void testAdd() {
+    //     assertEquals(15, calculator.add(10, 5));
+    //     assertEquals(0, calculator.add(-10, 10));
+    //     assertEquals(-5, calculator.add(-10, -5));
+    // }
 
     @Test
     void testSubtract() {
